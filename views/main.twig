@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="bulma-start/css/main.css">
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <section class="section">
+            <div class="tabs is-fullwidth">
+                <ul>
+                    <li {% if url == 'index2.php' %} class="is-active" {% endif %} ><a href="index2.php">Home</a></li>
+                    <li {% if url == 'supported2.php' %} class="is-active" {% endif %} ><a href="supported2.php">Supported</a></li>
+                    <li {% if url == 'about2.php' %} class="is-active" {% endif %} ><a href="about2.php">About Us</a></li>
+                    <li {% if url == 'contact2.php' %} class="is-active" {% endif %} ><a href="contact2.php">Contact Us</a></li>     
+                </ul>
+            </div>
+        </section>
+    </header>
+    <main>
+        <section class="hero is-fullheight banner">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title is-size-1">
+                        Yogi Exchange
+                    </h1>
+                </div>
+            </div>
+        </section>
+        {% block main %}
+        {% endblock main %}
+    </main>
+    <footer class="footer has-text-white">
+        <p class="is-scheme1">Follow the Creator!</p>
+        <a class="github-button" href="https://github.com/eugenesinamban" aria-label="Follow @eugenesinamban on GitHub">Follow @eugenesinamban</a><br>
+        <a href="https://twitter.com/EugeneSinamban?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="false" target="_blank">Follow @EugeneSinamban</a><br>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <p class="is-scheme1">
+            &copy; 2019 Yogi Exchange
+        </p>
+    </footer>
+
+</body>
+</html>

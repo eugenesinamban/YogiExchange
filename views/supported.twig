@@ -1,0 +1,29 @@
+{% extends "main.twig" %}
+
+{% block main %}
+    <section class="section">
+        <div class="container">
+            <div class="column is-offset-one-third is-one-third">
+                <h2 class="is-size-6 has-text-centered">
+                    Updated as of : {{ filetime }}
+                </h2>
+                <div class="box">
+                    <table class="table is-bordered is-fullwidth">
+                        <tr>
+                            <th>Currency</th>
+                            <th>Rate</th>
+                        </tr>
+                        {% for rateCode, array in output.getSupportedRates() %}
+                            {% for symbol, detail in array %}    
+                                <tr>
+                                    <td>({{ rateCode }}) {{ detail }}</td>
+                                    <td>{{ symbol }}{{ output.fetchRate(rateCode) }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock main %}
