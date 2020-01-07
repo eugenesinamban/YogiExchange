@@ -4,11 +4,14 @@
 <section class="section">
     <div class="container">
         <div class="column is-one-third is-offset-one-third">
+            <h2 class="is-size-6 has-text-centered has-text-danger">
+                {{ error }}
+            </h2>
             <h2 class="is-size-6 has-text-centered">
                 Updated as of : {{ filetime }}
             </h2>
             <div class="box">
-                <form action="index2.php" method="post">
+                <form action="index.php" method="post">
                     <label for="from" class="label">
                         Exchange from : 
                     </label>
@@ -18,7 +21,7 @@
                                 <select name="currency1" id="currency1">
                                     {% for rateCode, array in output.getSupportedRates() %}
                                         {% for symbol, detail in array %}
-                                            <option value="{{ rateCode }}" {% if post.currency1 == rateCode %} selected {% endif %} > {{ symbol }} {{ detail }}
+                                            <option value="{{ rateCode }}" {% if post.currency1 == rateCode %} selected {% endif %}> {{ symbol }} {{ detail }}
                                             </option>
                                         {% endfor %}
                                     {% endfor %}
@@ -38,8 +41,8 @@
                                 <select name="currency2" id="currency2">
                                     {% for rateCode, array in output.getSupportedRates() %}
                                         {% for symbol, detail in array %}
-                                            <option value="{{ rateCode }}"{% if post.currency2 == rateCode %} selected {% endif %} > {{ symbol }} {{ detail }}
-                                            </option>
+                                        <option value="{{ rateCode }}"{% if post.currency2 == rateCode %} selected {% endif %} > {{ symbol }} {{ detail }}
+                                        </option>
                                         {% endfor %}
                                     {% endfor %}
                                 </select>
@@ -51,7 +54,7 @@
                     </div>
                 </form>
             </div>
-            <article class="message {{ message.class }}">
+            <article class="message {{ message.class }} has-text-centered">
                 <div class="message-body">
                     <p>{{ message.message }}</p>
                 </div>

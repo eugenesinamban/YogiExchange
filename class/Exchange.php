@@ -1,77 +1,59 @@
 <?php 
 // 
+require("Rates.php");
 require("Output.php");
 class Exchange {
-    // 
-    public static function checkInput(array $post) : array {
-        // 
-        $objects = [];
-        // 
-        foreach ($post as $key => $value) {
-            // 
-            if ("" === trim($value) || null === $value || False === is_numeric($value)) {
-                // 
-                throw new Exception("Input is invalid! Try again!");
-                exit;
-            }
-            // 
-            $objects[$key] = $value;
-            // 
-        }
-        return $objects;
-    }
     // 
     public static function prepare(array $post = null) : array {
         // 
         try {
             // 
-            $currency1 = isset($post['currency1']) ? Output::fetchRate($post['currency1']) : null;
-            $currency2 = isset($post['currency2']) ? Output::fetchRate($post['currency2']) : null;
-            $currency2Symbol = isset($post['currency2']) ? Output::getSupportedRates($post['currency2']) : null;
-            $amount = isset($post['amount']) ? $post['amount'] : null;
+            $parameters = ['currency1', 'currency2', 'amount'];
             // 
-            $objects = [
+            $objects = [];
+            // 
+            foreach ($parameters as $value) {
                 // 
-                'currency1' => $currency1,
-                'currency2' => $currency2,
-                'amount' => $amount
-            ];
-            // 
-            // 
-            self::checkInput($objects);
-            // 
-            $objects['currency2Symbol'] = $currency2Symbol;
-            // 
+                $objects[$value] = $post[$value] ?? $_POST[$value];
+                // 
+                if ("" === trim($objects[$value]) || null === $objects[$value] || ('amount' == $value && false === is_numeric($objects[$value]))) {
+                    // 
+                    throw new Exception("Input is invalid! Try again!");
+                    exit;
+                }
+                // 
+            }
             return $objects;
             // 
         } catch (Throwable $e) {
             // 
-            throw new Exception($e->getMessage());
+            throw $e;
         }
     }
     // 
-    public static function compute($array) {
+    public static function compute(array $post = null) {
         //
         try {
             // 
-            $object = self::prepare($array);
+            $object = self::prepare($post);
             // 
             $amountToUsd = 0; 
             $finalAmount = 0;
             $returnMessage = '';
-            $amountToUsd = $object['amount'] / ($object['currency1']);
+            $amountToUsd = $object['amount'] / Rates::fetchRate($object['currency1']);
             // 
-            $finalAmount = $amountToUsd * $object['currency2'];
+            $finalAmount = $amountToUsd * Rates::fetchRate($object['currency2']);
             //
-            $returnMessage .= key($object['currency2Symbol']) . $finalAmount;
+            $returnMessage .= key(Output::getSupportedRates($object['currency2'])) . $finalAmount;
             // 
             return $returnMessage;
             // 
         } catch (Exception $e) {
             // 
-            throw new Exception($e->getMessage());
+            throw $e;
         }
     }
     // 
 }
+// 
 ?>

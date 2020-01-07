@@ -6,14 +6,14 @@ class Output {
         // 
         $rates = [
             // 
-            "USD" => ["$" => "U.S. Dollar"],
-            "JPY" => ["¥" => "Japanese Yen"],
-            "PHP" => ["₱" => "Philippine Peso"],
-            "CAD" => ["$" => "Canadian Dollar"],
-            "KRW" => ["₩" => "Korean Won"],
-            "EUR" => ["€" => "Euro"],
-            "GBP" => ["£" => "British Pound"],
-            "AUD" => ["$" => "Australian Dollar"]
+            "USD" => ['$' => 'U.S. Dollar'],
+            "JPY" => ['¥' => 'Japanese Yen'],
+            "PHP" => ['₱' => 'Philippine Peso'],
+            "CAD" => ['$' => 'Canadian Dollars'],
+            "KRW" => ['₩' => 'Korean Won'],
+            "EUR" => ['€' => 'Euro'],
+            "GBP" => ["£" => 'British Pounds'],
+            "AUD" => ['$' => 'Australian Dollars']
             // 
         ];
         // 
@@ -26,16 +26,6 @@ class Output {
         }
     }
     //  
-    public static function fetchRate(string $rateCode) : string {
-        // 
-        $file = "rates.json";
-        // 
-        $cachedRates = file_get_contents($file);
-        $rates = json_decode($cachedRates);
-        return round($rates->rates->$rateCode,2);
-        // 
-    }
-    // 
 }
 
 ?>

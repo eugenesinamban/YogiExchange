@@ -41,6 +41,16 @@ class Rates {
         }
         // 
     }
+    // 
+    public static function fetchRate(string $rateCode) : string {
+        // 
+        $file = "../rates.json";
+        // 
+        $cachedRates = file_get_contents($file);
+        $rates = json_decode($cachedRates);
+        return round($rates->rates->$rateCode,2);
+        // 
+    }
 }
 
 ?>
