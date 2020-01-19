@@ -5,11 +5,6 @@ require("bootstrap.php");
 date_default_timezone_set("asia/tokyo");
 try {
     // 
-    if (false === Rates::isValid()) {
-        // 
-        Rates::cacheRates();
-    }
-    // 
     $output = new Output();
     $error = $_SESSION['error'] ?? null;
     $url = basename($_SERVER['PHP_SELF']);

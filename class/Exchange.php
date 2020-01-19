@@ -1,7 +1,8 @@
 <?php 
-// 
+
 require("Rates.php");
 require("Output.php");
+
 class Exchange {
     // 
     public static function prepare(array $post = null) : array {
