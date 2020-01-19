@@ -17,7 +17,7 @@
                             {% for symbol, detail in array %}    
                                 <tr>
                                     <td>({{ rateCode }}) {{ detail }}</td>
-                                    <td>{{ symbol }}{{ output.fetchRate(rateCode) }}</td>
+                                    <td>{{ symbol }}{{ rates.fetchRate(rateCode) }}</td>
                                 </tr>
                             {% endfor %}
                         {% endfor %}
