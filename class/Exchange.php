@@ -45,7 +45,7 @@ class Exchange {
             // 
             $finalAmount = $amountToUsd * Rates::fetchRate($object['currency2']);
             //
-            $returnMessage .= key(Output::getSupportedRates($object['currency2'])) . $finalAmount;
+            $returnMessage .= key(Output::getSupportedRates($object['currency2'])) . round($finalAmount, 2);
             // 
             return $returnMessage;
             // 
