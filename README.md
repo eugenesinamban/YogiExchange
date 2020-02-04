@@ -2,6 +2,10 @@
 
 http://yogiexchange.rf.gd
 
+![banner](image/Banner.png)
+
+![exchange](image/Exchange.png)
+
 Money exchange webiste powered by Twig and Bulma
 
 Website created to provide safe and reliable rates to users.
