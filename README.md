@@ -1,6 +1,6 @@
 # YogiExchange
 
-yogiexchange.rf.gd
+http://yogiexchange.rf.gd
 
 Money exchange webiste powered by Twig and Bulma
 
