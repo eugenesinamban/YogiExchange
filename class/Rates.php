@@ -44,7 +44,7 @@ class Rates {
     // 
     public static function fetchRate(string $rateCode) : string {
         // 
-        $file = "../rates.json";
+        $file = __DIR__ . "/../rates.json";
         // 
         $cachedRates = file_get_contents($file);
         $rates = json_decode($cachedRates);
